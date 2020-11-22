@@ -10,7 +10,7 @@ class Request_Material extends Model
     use HasFactory;
 
     public function request(){
-        $this->belongsTo(Request::class);
+        $this->belongsTo(Requests::class);
     }
 
     public function material(){
