@@ -9,8 +9,8 @@ class Timetable extends Model
 {
     use HasFactory;
 
-    public function user(){
-        $this->belongsTo(User::class);
+    public function usertimetable(){
+        $this->belongsTo(UserTimetable::class);
     }
 
     public function place(){

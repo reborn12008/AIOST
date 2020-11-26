@@ -31,10 +31,11 @@ Route::get('/home/aluno/shop/request/{product}', [App\Http\Controllers\ShopContr
 Route::get('/home/aluno/cart', [App\Http\Controllers\ShopController::class,'confirm_request'])->name('item_cart');
 Route::get('/home/aluno/cart/delete', [App\Http\Controllers\ShopController::class,'delete_cart'])->name('delete_cart');
 Route::post('/home/aluno/cart/confirm', [App\Http\Controllers\ShopController::class,'confirm_cart'])->name('confirm_cart');
-Route::get('/home/aluno/rooms', [App\Http\Controllers\RoomsController::class,'index'])->name('aluno_room');
+Route::get('/home/aluno/rooms', [App\Http\Controllers\RoomsController::class,'roomform'])->name('aluno_room');
+Route::get('/home/aluno/rooms/given_room', [App\Http\Controllers\RoomsController::class,'given_room'])->name('room_given');
 //
-Route::get('/home/docente/mapa.salas', [App\Http\Controllers\RoomsController::class,'roomsmap'])->name('docente_room');
-//
+Route::get('/docente/mapa_salas', [App\Http\Controllers\RoomsController::class,'roomsmap'])->name('docente_room');
+Route::post('/docente/mapa_salas', [App\Http\Controllers\RoomsController::class,'map'])->name('roommap');
 //Route::get('/home/admnistrador/gerir.stock', );
 
 

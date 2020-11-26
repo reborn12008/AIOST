@@ -1,9 +1,8 @@
 @extends('aluno.layout.app')
 
 @section('content')
-    @foreach($requestedItems as $item)
-        @foreach($item as $i)
-            {{$i}}
-        @endforeach
-    @endforeach
+    <div class="container">
+        <h1>A sua requisição foi efetuada com sucesso!</h1>
+        <p>Foi enviado um comprovativo para o seu e-mail que deverá mostrar no ato de recolha.</p>
+    </div>
 @endsection

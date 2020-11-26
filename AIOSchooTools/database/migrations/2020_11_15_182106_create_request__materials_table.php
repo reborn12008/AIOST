@@ -17,6 +17,7 @@ class CreateRequestMaterialsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('request_id');
             $table->unsignedBigInteger('material_id');
+            $table->smallInteger('material_amount');
         });
     }
 

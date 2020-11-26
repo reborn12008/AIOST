@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Request_Material extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     public function request(){
         $this->belongsTo(Requests::class);

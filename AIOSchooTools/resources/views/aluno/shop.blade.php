@@ -1,5 +1,4 @@
 @extends('aluno.layout.app')
-
 @section('content')
     <div class="row">
         <div class="col-2">
@@ -10,10 +9,8 @@
                 @foreach($categories as $category)
                 <li class="list-group-item">
                     <div class="form-check">
-                        <label class="form-check-label" for="{{$category . 'radio'}}">
-                            {{strtoupper($category[0]).substr($category,1)}}
-                        </label>
-                        <input class="form-check-input pullRight" type="radio" name="filterRadio" id="{{$category.'radio'}}" value="{{$category}}">
+                        <input class="form-check-input filtercheckbox" type="checkbox" name="checkboxfilter" id="{{$category}}check" value="{{$category}}">
+                        <label class="form-check-label" for="inlineRadio1">{{strtoupper($category[0]).substr($category,1)}}</label>
                     </div>
                 </li>
                 @endforeach
@@ -25,7 +22,7 @@
                 @foreach($materialsList as $material)
                     <div class="col">
                         <div class="card">
-                            <img class="img-thumbnail shopImage" src="{{$material['image']}}" alt="product"/>
+                            <img class="shopImage" src="{{$material['image']}}" alt="product"/>
                             <div class="card-body">
                                 <h5 class="card-title"> {{$material['name']}} </h5>
                             </div>
@@ -40,5 +37,4 @@
             </div>
         </div>
     </div>
-
 @endsection

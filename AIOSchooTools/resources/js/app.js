@@ -31,4 +31,20 @@ const app = new Vue({
     el: '#app',
 });
 
+function getIds(filter){
 
+}
+function filterItems(){
+    var filter = [];
+    for(var i=0; i<checkbox.length; i++) {
+        if(checkbox[i].checked){
+            filter.push(checkbox[i].value);
+        }
+    }
+    alert(filter);
+}
+var checkbox = document.getElementsByClassName("filtercheckbox");
+
+for(var i=0; i<checkbox.length; i++) {
+    checkbox[i].addEventListener("change",filterItems);
+}

@@ -9,6 +9,9 @@ class Material extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['amount'];
+    public $timestamps = false;
+
     public function request_material(){
         $this->belongsTo(Request_Material::class);
     }

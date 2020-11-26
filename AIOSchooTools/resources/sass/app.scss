@@ -6,3 +6,36 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.occupied_timetable {
+    .occupying_person {
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover{
+        .occupying_person{
+            border:1px solid blue;
+            height: 20px;
+            background-color: #4a5568;
+            color:white;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.shopImage {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    @media screen and (max-width: 480px) {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+

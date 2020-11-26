@@ -20,6 +20,7 @@ class CreateMaterialsTable extends Migration
             $table->integer('amount');
             $table->string('category');
             $table->string('image');
+            $table->string('location');
         });
     }
 

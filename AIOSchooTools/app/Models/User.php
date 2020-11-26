@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function request(){
         $this->hasMany(Requests::class);
     }
+
+    public function usertimetable(){
+        $this->hasMany(UserTimetable::class);
+    }
 }

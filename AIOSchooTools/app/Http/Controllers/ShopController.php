@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Material;
 use App\Models\Profile;
+use App\Models\Request_Material;
+use App\Models\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -143,8 +145,27 @@ class ShopController extends Controller
             }
         }
 
-        
+        $newrequestId = count(Requests::all()) + 1;
+        $newrequest = new Requests;
+        $newrequest->id = $newrequestId;
+        $newrequest->user_id = $userId;
+        $newrequest->request_date = date('Y-m-d H:i:s');
+        $newrequest->save();
 
-        return view('aluno.cartEnd',['user'=>$userclass,'username'=>$user['name'], 'requestedItems'=>$materials]);
+        foreach ($materials as $m){
+            $newrequestmaterial = new Request_Material();
+            $newrequestmaterial->request_id = $newrequestId;
+            $newrequestmaterial->material_id = $m[0];
+            $newrequestmaterial->material_amount = $m[1];
+            $newrequestmaterial->save();
+
+            $decreaseMaterialAmount = Material::findOrFail($m[0]);
+            $currentAmount = $decreaseMaterialAmount['amount'];
+            $newAmount = $currentAmount - $m[1];
+            $decreaseMaterialAmount->update(['amount'=> $newAmount]);
+        }
+
+
+        return view('aluno.cartEnd',['user'=>$userclass,'username'=>$user['name']]);
     }
 }
