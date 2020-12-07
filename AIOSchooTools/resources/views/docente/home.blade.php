@@ -1,5 +1,7 @@
 @extends('docente.layout.app')
 
-@section('contemt')
-<h1>Entrou um {{ $user }}</h1>
+@section('content')
+<div class="container">
+    <h3>Bem-vindo à página inicial designada para utilizadores do tipo {{$user}}</h3>
+</div>
 @endsection

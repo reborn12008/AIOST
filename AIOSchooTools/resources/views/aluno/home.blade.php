@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container">
-        <h1>Entrou um {{ $user }} chamado {{ $username }}</h1>
+        <h3>Bem-vindo à página inicial designada para utilizadores do tipo {{$user}}</h3>
     </div>
-
 @endsection

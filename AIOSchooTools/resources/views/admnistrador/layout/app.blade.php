@@ -26,9 +26,6 @@
                 <a class="navbar-brand" href="{{route('home',$user)}}">
                     *LOGO* School Tools
                 </a>
-                <a class="navbar-text p-3" href="#">
-                    Gerir stock de material
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -36,7 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a class="navbar-text p-3" href="{{ route('stock_page') }}">
+                            Gerir stock de material
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

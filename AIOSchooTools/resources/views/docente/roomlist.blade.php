@@ -6,6 +6,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th>08:30</th>
                 <th>09:30</th>
                 <th>10:30</th>
                 <th>11:30</th>
@@ -42,6 +43,4 @@
             </tbody>
         </table>
     </div>
-
-
 @endsection

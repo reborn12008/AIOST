@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row ml-5">
             <form method="post" action="{{route('roommap')}}" class="form-row align-items-center">
                 @csrf
                 <div class="col-auto">
@@ -35,16 +35,25 @@
                 </div>
             </form>
         </div>
+        {{$roomMapErr ?? '' }}
         <div class="row">
             <div class="col-1 mt-3">
-                <button>-</button>
+                <button class="btn h-100">
+                    <span class="badge badge-pill badge-dark"><h2 class="p-1"> - </h2></span>
+                </button>
             </div>
-            <div class="col">
+            <div class="col w-75">
                 @yield('map')
             </div>
             <div class="col-1 mt-3">
-                <button class="h-100">+</button>
+                <button class="btn h-100">
+                    <span class="badge badge-pill badge-dark"><h2 class="p-1"> + </h2></span>
+                </button>
             </div>
         </div>
     </div>
 @endsection
+
+
+
+

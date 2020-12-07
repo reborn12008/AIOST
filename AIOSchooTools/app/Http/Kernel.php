@@ -2,7 +2,13 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckAmountsCart;
+use App\Http\Middleware\CheckLoginFields;
 use App\Http\Middleware\ClassCheck;
+use App\Http\Middleware\InsertFormCheck;
+use App\Http\Middleware\RoomFormCheck;
+use App\Http\Middleware\roomMapCheck;
+use App\Http\Middleware\UpdateFormCheck;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,5 +70,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'class'=>ClassCheck::class,
+        'map_form_check'=>RoomMapCheck::class,
+        'checks_amount_cart'=>CheckAmountsCart::class,
+        'room_form_check'=>RoomFormCheck::class,
+        'update_form_check'=>UpdateFormCheck::class,
+        'insert_form_check'=>InsertFormCheck::class,
+
     ];
 }

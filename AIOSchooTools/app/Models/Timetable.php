@@ -9,6 +9,8 @@ class Timetable extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function usertimetable(){
         $this->belongsTo(UserTimetable::class);
     }

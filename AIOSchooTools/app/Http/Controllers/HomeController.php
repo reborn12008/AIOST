@@ -6,6 +6,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,6 @@ class HomeController extends Controller
     public function index($user)
     {
         $authUser = Auth::user();
-
         $authUser = $authUser['name'];
         if($user=="aluno"){
             return view('aluno.home',['user'=>$user,'username'=>$authUser]);
@@ -36,6 +36,6 @@ class HomeController extends Controller
         }else if($user=="admnistrador"){
             return view('admnistrador.home',['user'=>$user,'username'=>$authUser]);
         }
-        return view('home',['user'=>$user]);
+        return view('home');
     }
 }

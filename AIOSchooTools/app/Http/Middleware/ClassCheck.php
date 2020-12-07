@@ -18,23 +18,19 @@ class ClassCheck
      */
     public function handle(Request $request, Closure $next)
     {
-       $xyzpath = $request->path();
-
-       $user = $request->user();
-       $user = $user['id'];
-
-       $userclass = Profile::findOrFail($user);
-
+        $xyzpath = $request->path();
+        $xyzpath = explode("/", $xyzpath);
+        $user = $request->user();
+        $userclass = Profile::findOrFail($user['id']);
+        $userclass = $userclass['roleClass'];
         $routes = Route::getRoutes();
+
         foreach($routes as $r){
-            if($r->uri == $xyzpath){
-                if(str_contains($xyzpath, $userclass) ){
-                    return $next($request);
-                }else{
-                    return 404;
-                }
+            $linkRole = explode("/", $r->uri);
+            if($linkRole[0] == $xyzpath[0] && $linkRole[0] == $userclass){
+                return $next($request);
             }
         }
-        return 404;
+        return redirect()->to(route('home',$userclass));
     }
 }

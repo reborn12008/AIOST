@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <img src="{{$material['image']}}" alt="item"/>
+                <img src="{{$material['image']}}" alt="item" class="shopImagePage"/>
             </div>
             <div class="col">
                 <div class="card bg-light mb-3" style="max-width: 18rem;">

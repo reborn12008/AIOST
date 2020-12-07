@@ -21,7 +21,7 @@
             <div class="row row-cols-3">
                 @foreach($materialsList as $material)
                     <div class="col">
-                        <div class="card">
+                        <div class="card mt-2">
                             <img class="shopImage" src="{{$material['image']}}" alt="product"/>
                             <div class="card-body">
                                 <h5 class="card-title"> {{$material['name']}} </h5>
