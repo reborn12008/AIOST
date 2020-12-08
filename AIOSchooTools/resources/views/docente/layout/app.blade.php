@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{route('home',$user)}}">
-                    *LOGO* School Tools
+                    <img style="max-width: 40px" src="/images/logo-ST.png"> School Tools
                 </a>
                 <a class="navbar-text p-3" href="{{route('docente_room')}}">
                     Mapa de Salas

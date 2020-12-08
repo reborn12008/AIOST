@@ -10,7 +10,7 @@
         <h1>Materias para requisição</h1>
         <div class="row">
             <div class="col form-group">
-                <input id="search_query" name="search_query" placeholder="Pesquisar item" class="form-control" type="text">
+                <input id="search_query" name="search_query" placeholder="Pesquisar item" class="form-control" type="text" value="">
             </div>
             <div class="col">
                 <a href="{{route('add_item_page')}}" class="btn btn-info">Adicionar produto</a>
@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="row row-cols-3">
+                <div class="row row-cols-3" id="items_list">
                     @foreach($materialsList as $material)
                         <div class="col">
                             <div class="card mt-2">

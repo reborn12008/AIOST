@@ -40,27 +40,32 @@ class ShopController extends Controller
         return view('aluno.shop',['user'=>$userclass,'username'=>$user['name'], 'materialsList'=>$materialsOptions, 'categories'=>$categories]);
     }
 
-    public function filterCategory($category){
-        $materialsOptions =array();
-        $categories = array();
-//        $materialsList = Material::all()->where('category',$category);
-        $materialsList = Material::all();
-        foreach ($materialsList as $material){
-            if($material['amount']>0 && $material['category'] == $category){
-                array_push($materialsOptions,$material);
+    public function filterCategory(Request $request){
+        if($request->ajax()){
+            $query = $request->get('filter');
+            //$query =$query[0] . count($query);
+            $output = "";
+            for($i = 0; $i<count($query);$i++){
+                $materialsList = Material::where('category','=', $query[$i])->get();
+                foreach ($materialsList as $material){
+                    $output .= "<div class='col'>" .
+                        "<div class='card mt-2'>" .
+                        "<img class='shopImage' src='" . $material['image'] .  "' alt='product'/>" .
+                        "<div class='card-body'>" .
+                        "<h5 class='card-title'>" . $material['name'] . "</h5>" .
+                        "</div>" .
+                        "<ul class='list-group list-group-flush'>" .
+                        "<li class='list-group-item'>Quantidade:" .  $material['amount'] . "</li>" .
+                        "<li class='list-group-item'>Categoria:" . strtoupper($material['category'][0]).substr($material['category'],1) . "</li>" .
+                        "<li class='list-group-item'><a href='" . route('edit_item',$material['id']) . "' class='btn btn-primary'>Editar</a></li>" .
+                        "</ul>" .
+                        "</div>" .
+                        "</div>";
+                }
             }
-            if(in_array($material['category'],$categories)){
-
-            }else{
-                array_push($categories,$material['category']);
-            }
+            $data = $output;
+            echo json_encode($data);
         }
-        $user = Auth::user();
-        $userId = $user['id'];
-
-        $userclass = Profile::findOrFail($userId);
-        $userclass = $userclass['roleClass'];
-        return view('aluno.shop',['user'=>$userclass,'username'=>$user['name'], 'materialsList'=>$materialsOptions, 'categories'=>$categories]);
     }
 
     public function item($material){
@@ -316,5 +321,40 @@ class ShopController extends Controller
             'username'=>$user['name'],
             'materialsList' => Material::all(),
             'sucess'=>'Novo item adicionado com sucesso!']);
+    }
+
+    public function stock_search(Request $request){
+        if($request->ajax()){
+            $query = $request->get('query');
+            if( $query != ''){
+                $materialsList = Material::where('name','like', '%' . $query . '%')->get();
+            }else{
+                $materialsList = Material::all();
+            }
+
+            if($materialsList->count() > 0){
+                $output = "";
+                foreach ($materialsList as $material){
+                    $output .= "<div class='col'>" .
+                            "<div class='card mt-2'>" .
+                                "<img class='shopImage' src='" . $material['image'] .  "' alt='product'/>" .
+                                "<div class='card-body'>" .
+                                    "<h5 class='card-title'>" . $material['name'] . "</h5>" .
+                                "</div>" .
+                                "<ul class='list-group list-group-flush'>" .
+                                    "<li class='list-group-item'>Quantidade:" .  $material['amount'] . "</li>" .
+                                    "<li class='list-group-item'>Categoria:" . strtoupper($material['category'][0]).substr($material['category'],1) . "</li>" .
+                                    "<li class='list-group-item'><a href='" . route('edit_item',$material['id']) . "' class='btn btn-primary'>Editar</a></li>" .
+                                "</ul>" .
+                            "</div>" .
+                        "</div>";
+                }
+            } else {
+                $output = 'Item com esse nome não encontrado!';
+            }
+
+            $data = $output;
+            echo json_encode($data);
+        }
     }
 }

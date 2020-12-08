@@ -22,8 +22,40 @@ class UpdateFormCheck
         $category = $request->input('material_category_input');
         $location = $request->input('material_location_input');
 
-        if($name == null || $description == null || $amount == null || $category[0] == null || $location == null){
-            return back();
+        $nameErr = '';
+        $descriptionErr = '';
+        $amountErr = '';
+        $categoryErr = '';
+        $locationErr = '';
+
+        $errorCheck = false;
+
+        if($name == null){
+            $nameErr = "Este campo não pode estar vazio!";
+            $errorCheck = true;
+        }
+        if($description == null){
+            $descriptionErr = "Este campo não pode estar vazio!";
+            $errorCheck = true;
+        }
+        if($amount == null){
+            $amountErr = "Este campo não pode estar vazio!";
+            $errorCheck = true;
+        }
+        if($category[0] == "neweditcategory"){
+            $category = $request->input('neweditcategoryinput');
+            if($category == null){
+                $categoryErr = "Este campo não pode estar vazio!";
+                $errorCheck = true;
+            }
+        }
+        if($location == null){
+        $locationErr = "Este campo não pode estar vazio!";
+            $errorCheck = true;
+    }
+
+        if($errorCheck){
+            return back()->with('nameErr',$nameErr)->with('descriptionErr',$descriptionErr)->with('amountErr',$amountErr)->with('categoryErr',$categoryErr)->with('locationErr',$locationErr);
         }
         return $next($request);
     }

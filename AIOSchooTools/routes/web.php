@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home/{user}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/aluno/shop', [App\Http\Controllers\ShopController::class,'index'])->name('aluno_shop');
-Route::get('/aluno/shop/{category}', [App\Http\Controllers\ShopController::class,'filterCategory'])->name('shop_filter');
+Route::get('/aluno/shop/filter', [App\Http\Controllers\ShopController::class,'filterCategory'])->name('shop_filter');
 Route::get('/aluno/shop/request/{product}', [App\Http\Controllers\ShopController::class,'item'])->name('shop_item');
 Route::post('/aluno/shop/request/{product}/finish', [App\Http\Controllers\ShopController::class,'storeItem'])->name('item_finish');
 Route::get('/aluno/shop/request/{product}', [App\Http\Controllers\ShopController::class,'item'])->name('shop_item');
@@ -41,6 +41,7 @@ Route::get('/admnistrador/stock/new_item', [App\Http\Controllers\ShopController:
 Route::get('/admnistrador/stock/{item}/edit', [App\Http\Controllers\ShopController::class, 'edit_item'])->name('edit_item');
 Route::post('/admnistrador/stock/{item}/update', [App\Http\Controllers\ShopController::class, 'update_item'])->name('update_item')->middleware('update_form_check');
 Route::post('/admnistrador/new_material', [App\Http\Controllers\ShopController::class, 'insert_material'])->name('insert_material')->middleware('insert_form_check');
+Route::get('/admnistrador/stock/search', [App\Http\Controllers\ShopController::class,'stock_search'])->name('stock_search');
 
 
 

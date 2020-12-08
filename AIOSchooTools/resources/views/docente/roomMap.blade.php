@@ -35,20 +35,14 @@
                 </div>
             </form>
         </div>
-        {{$roomMapErr ?? '' }}
-        <div class="row">
-            <div class="col-1 mt-3">
-                <button class="btn h-100">
-                    <span class="badge badge-pill badge-dark"><h2 class="p-1"> - </h2></span>
-                </button>
+        @if(session('roomMapErr'))
+            <div class="ml-5 mt-2 alert alert-danger w-75" role="alert">
+                {{session('roomMapErr')}}
             </div>
+        @endif
+        <div class="row">
             <div class="col w-75">
                 @yield('map')
-            </div>
-            <div class="col-1 mt-3">
-                <button class="btn h-100">
-                    <span class="badge badge-pill badge-dark"><h2 class="p-1"> + </h2></span>
-                </button>
             </div>
         </div>
     </div>

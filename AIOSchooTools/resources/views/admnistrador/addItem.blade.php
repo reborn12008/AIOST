@@ -49,10 +49,10 @@
                         Carregar imagem
                     </div>
                     <input id="newmaterial_image" name="newmaterial_image" type="file" class="btn btn-dark ml-2">
-                    <img id="image_preview" alt="Your image" class="invisible"/>
+                    <img id="image_preview" alt="Your image" class="invisible ml-5 p-2" style="max-width: 250px; border:2px solid grey;"/>
                     <br/>
                     <button class="btn btn-primary mt-3 d-block mx-auto" type="submit" value="submit">
-                        Atualizar
+                        Adicionar Item
                     </button>
                 </div>
             </div>

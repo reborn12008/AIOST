@@ -18,7 +18,7 @@
         </div>
         <div class="col">
             <h1>Materias para requisição</h1>
-            <div class="row row-cols-3">
+            <div class="row row-cols-3" id="shopItems_list">
                 @foreach($materialsList as $material)
                     <div class="col">
                         <div class="card mt-2">

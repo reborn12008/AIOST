@@ -42,7 +42,22 @@ function filterItems(){
             filter.push(checkbox[i].value);
         }
     }
-    alert(filter);
+    if(filter.length >0){
+        $.ajax({
+                url:"/aluno/shop/filter",
+                method:"GET",
+                data:{ filter:filter },
+                dataType:"json",
+                success:function (data) {
+                    //console.log(data);
+                    document.getElementById('shopItems_list').innerHTML = data;
+                }
+            }
+        );
+    }else{
+        location.reload();
+    }
+
 }
 var checkbox = document.getElementsByClassName("filtercheckbox");
 
@@ -110,4 +125,25 @@ function toggleEditNewCatInput(event){
     }else{
         nctinput.setAttribute("disabled",true);
     }
+}
+
+function stockSearch(query){
+    $.ajax({
+            url:"/admnistrador/stock/search",
+            method:"GET",
+            data:{query:query},
+            dataType:"json",
+            success:function (data) {
+                document.getElementById('items_list').innerHTML = data;
+            }
+        }
+    )
+}
+
+var searchInput = document.getElementById("search_query");
+if(searchInput){
+    searchInput.addEventListener("change",function () {
+        let query = $(this).val();
+        stockSearch(query);
+    });
 }

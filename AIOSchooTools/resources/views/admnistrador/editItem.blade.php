@@ -13,16 +13,19 @@
                     <div class="card-header">
                         Nome
                         <input id="material_name_input" name="material_name_input" class="form-control" type="text" value="{{ $material['name'] }}" />
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('nameErr') ?? ''}}</b></span>
                     </div>
                     <div class="card-body">
                         <div class="row ml-2">
                             Descrição
                             <input id="material_description_input" name="material_description_input" class="form-control mr-2" type="text" value="{{ $material['description'] }}"/>
                         </div>
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('descriptionErr') ?? ''}}</b></span>
                         <hr>
                         <div class="row ml-2">
                             Quantidade disponivel
                             <input id="material_amount_input" name="material_amount_input" class="form-control mr-2" type="number" min="0" value="{{ $material['amount'] }}"/>
+                            <span class="ml-3 mt-2" style="color: red;"><b>{{session('amountErr') ?? ''}}</b></span>
                         </div>
                         <hr>
                         <div class="row ml-2">
@@ -44,12 +47,13 @@
                                     <input id="neweditcategoryinput" name="neweditcategoryinput" disabled type="text" class="form-control" placeholder="Nova Categoria" value="">
                                 </div>
                             </div>
-                            {{--<input id="material_category_input" name="material_category_input" class="form-control mr-2" type="text" value="{{ $material['category'] }}"/>--}}
+                            <span class="ml-3 mt-2" style="color: red;"><b>{{session('categoryErr') ?? ''}}</b></span>
                         </div>
                         <hr>
                         <div class="row ml-2">
                             Localização
                             <input id="material_location_input" name="material_location_input" class="form-control mr-2" type="text" value="{{ $material['location'] }}"/>
+                            <span class="ml-3 mt-2" style="color: red;"><b>{{session('locationErr') ?? ''}}</b></span>
                         </div>
                         <hr>
                         <div class="row ml-2">
@@ -60,7 +64,7 @@
                             Carregar nova imagem
                         </div>
                         <input id="material_image_input" name="material_image_input" type="file" class="btn btn-dark ml-2">
-                        <img id="edit_image_preview" alt="Your image" class="invisible"/>
+                        <img id="edit_image_preview" alt="Your image" class="invisible" style="max-width: 250px; border:2px solid grey; margin-top: 10px; margin-left: 10px;"/>
                         <br/>
                         <button class="btn btn-primary mt-3 d-block mx-auto" type="submit" value="submit">
                             Atualizar

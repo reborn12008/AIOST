@@ -11,20 +11,16 @@
                         <div class="form-row align-items-center ml-2">
                             <input id="request_date" name="request_date" type="date" class="form-control w-25 mr-2"/>
                             <span>*A data para a qual pretende requisitar a sala</span><br/>
-                            @if(session('dateErr'))
-                                {{session('dateErr')}}
-                            @endif
                         </div>
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('dateErr') ?? ''}}</b></span>
                         <br/>
                         <label for="seats_needed">Lotação necessária:</label>
                         <div class="form-row align-items-center ml-2">
                             <input id="seats_needed" name="seats_needed" type="number" class="form-control w-25 mr-2"
                                    min="0"/>
                             <span>*Para quantas pessoas é a sala</span>
-                            @if(session('seatsErr'))
-                                {{session('seatsErr')}}
-                            @endif
                         </div>
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('seatsErr') ?? ''}}</b></span>
                         <br/>
                         <label for="type_room">Tipo de sala:</label>
                         <div class="form-row align-items-center ml-2">
@@ -36,10 +32,8 @@
                             </select>
                             <span>*Tipo de sala que pretende</span>
                             <br/>
-                            @if(session('typeErr'))
-                                {{session('typeErr')}}
-                            @endif
                         </div>
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('typeErr') ?? ''}}</b></span>
                         <br/>
                     </div>
                     <div class="form-group">
@@ -82,10 +76,8 @@
                             <div class="col mt-1">
                                 <span>*O horário que pretende</span><br>
                             </div>
-                            @if(session('hoursErr'))
-                                {{session('hoursErr')}}
-                            @endif
                         </div>
+                        <span class="ml-3 mt-2" style="color: red;"><b>{{session('hoursErr') ?? ''}}</b></span>
                     </div>
                     <div class="form-group">
                         <div class="form-row justify-content-center">
